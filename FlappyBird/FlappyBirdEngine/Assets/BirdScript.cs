@@ -8,24 +8,56 @@ public class BirdScript : MonoBehaviour
     public float flapStrength;
     public LogicScript logic;
     public bool birdIsAlive = true;
-    // Start is called before the first frame update
+    private float minPositionY = -20;
+    private float maxPositionY = 20;
+
+    //Sound fields
+    [SerializeField] private AudioSource jumpSoundEffect;
+    [SerializeField] public AudioClip deathSoundEffect;
+    public float volume;
+    new AudioSource audio;
+    public bool alreadyPlayed = false;
+
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        Time.timeScale = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space) && birdIsAlive)
+        Jumping();
+        BorderLimits();
+    }
+
+    void Jumping()
+    {
+        if (Input.GetKey(KeyCode.Space) && birdIsAlive)
         {
+            jumpSoundEffect.Play();
             myRigidbody.velocity = Vector2.up * flapStrength;
         }
     }
 
+    //Game Over
+    void BorderLimits()
+    {
+        if (transform.position.y < minPositionY || transform.position.y > maxPositionY)
+        {
+            logic.GameOver();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         logic.GameOver();
-        birdIsAlive = false;
+    }
+    public void GameOverDeathSound()
+    {
+        if(!alreadyPlayed)
+        {
+            audio.PlayOneShot(deathSoundEffect, volume);
+            alreadyPlayed = true;
+        }
     }
 }
