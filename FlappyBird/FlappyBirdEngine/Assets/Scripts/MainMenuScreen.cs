@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScreen : MonoBehaviour
 {
-    void Start()
+    public void PlayGame()
     {
-        Time.timeScale = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void Play()
+    public void QuitGame()
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
-        Time.timeScale = 1;
+        Debug.Log("QUIT");
+        Application.Quit();
     }
 }

@@ -6,20 +6,10 @@ using UnityEngine;
 public class PipeSpawnerScript : MonoBehaviour
 {
     public GameObject pipe;
-    private float spawnRate = 2f;
-    private float timer = 0f;
+    public float spawnRate = 2f;
+    public float timer = 0f;
 
-    void Start()
-    {
-        SpawnPipe();
-    }
-
-    void Update()
-    {
-        SpawnRate();
-    }
-
-    private void SpawnRate()
+    public void SpawnRate()
     {
         if(timer < spawnRate)
         {
@@ -32,7 +22,7 @@ public class PipeSpawnerScript : MonoBehaviour
             timer = 0;
         }   
     }
-    private void SpawnPipe()
+    public void SpawnPipe()
     {
         //Randomize pipe position in y axis
         float lowestPoint = -11;

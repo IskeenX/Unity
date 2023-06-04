@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BirdScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class BirdScript : MonoBehaviour
     public bool birdIsAlive = true;
     private float minPositionY = -47f;
     private float maxPositionY = 45f;
+    public int countdownTime;
+    public Text countdownDisplay;
 
     //Sound fields
     [SerializeField] private AudioSource jumpSoundEffect;
@@ -20,7 +23,6 @@ public class BirdScript : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1;
         birdRigidbody2D = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
