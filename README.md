@@ -1,5 +1,3 @@
-https://play.unity.com/mg/other/webgl-builds-351383
-
 # Unity Repository
 
 Welcome to the Unity Project Repository! This repository contains a collection of Unity projects and assets created by Degenbaev Iskender. It serves as a showcase of various projects and a resource for Unity developers.
@@ -7,6 +5,10 @@ Welcome to the Unity Project Repository! This repository contains a collection o
 ## About the Repository
 
 It acts as a portfolio and resource hub for fellow developers, showcasing a range of projects from games to interactive experiences.
+
+## Test the Game
+
+Click on the link and see the results: https://play.unity.com/mg/other/webgl-builds-351383
 
 ## Usage
 
